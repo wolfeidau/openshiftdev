@@ -42,10 +42,6 @@ rm -rf /var/lib/docker/*
 
 echo 'install ansible'
 
-yum -y --enablerepo=epel install ansible pyOpenSSL python-pip
-
-yum -y remove ansible
-
-pip install ansible==1.9.6
+yum -y --enablerepo=epel install ansible1.9 pyOpenSSL python-pip
 
 /opt/aws/bin/cfn-init -e $? --stack {{ ref('AWS::StackId') }} --resource OpenShiftNode --region {{ ref('AWS::Region') }}
